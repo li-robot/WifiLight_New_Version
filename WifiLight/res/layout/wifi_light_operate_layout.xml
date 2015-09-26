@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    >
+    <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/top_layout"
+        android:background="@drawable/operate_top_icon_bg"
+        >
+        <ImageView 
+            android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:id="@+id/deviceListBtn"
+        	android:layout_alignParentLeft="true"
+        	android:layout_marginLeft="10dip"
+        	android:background="@drawable/device_list_btn_selector"
+        	 android:layout_marginTop="10dip"
+        	/>
+        
+        <!--  <ImageView 
+            android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:id="@+id/settingBtn"
+        	android:layout_alignParentRight="true"
+        	android:layout_marginRight="50dip"
+        	android:background="@drawable/setting_btn_selector"
+        	 android:layout_marginTop="10dip"
+        	/> -->
+         
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/operate_layout"
+        android:layout_below="@id/top_layout"
+        >
+        
+    </RelativeLayout>
+
+</RelativeLayout>
