@@ -52,7 +52,7 @@ public class SearchActivity extends Activity {
 		Utils.canNetWorkOperateInMainThread();
 		ProcessService.searchActivityEntered = true;
 		context = this;
-		/* 启动后台服务   */
+		/* start the service   */
 		 new Thread(new Runnable(){
 			@Override
 			public void run() {
@@ -60,7 +60,7 @@ public class SearchActivity extends Activity {
 			}
 		 }).start();
 		 
-		 /* 启动定时器    */
+		 /* start Timer  */
 			 timer = new Timer();
 			 timer.schedule(new TimerTask(){
 				 @Override
@@ -70,7 +70,7 @@ public class SearchActivity extends Activity {
 				 }
 			 
 			 }, 10000);
-		showProgressDialog("搜索智控台灯");
+		showProgressDialog("search device");
 		
 		ProcessService.setOnWifiInfoGetListener(new OnWifiInfoGetListener(){
 			@Override
@@ -121,7 +121,7 @@ public class SearchActivity extends Activity {
 	
 	public void process(){
 		if(checkDevice()) {
-			/* 进入主界面    */
+			/* enter the main page   */
 			cancelAlert();
 			enterMainPage();
 			return;
@@ -134,14 +134,14 @@ public class SearchActivity extends Activity {
 	
 	public void showAlert(){
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setTitle("提示");
-		builder.setMessage("没有扫描到设备，是否重新扫描？");
+		builder.setTitle("Tip");
+		builder.setMessage("No device discover, retry?");
 		builder.setCancelable(false);
-		builder.setPositiveButton("是", new DialogInterface.OnClickListener() {
+		builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface arg0, int arg1) {
 				ProcessService.broadcast();
-				/* 启动定时器    */
+				/* start Timer */
 				 timer = new Timer();
 				 timer.schedule(new TimerTask(){
 					@Override
@@ -156,7 +156,7 @@ public class SearchActivity extends Activity {
 			}
 		});
 		
-		builder.setNegativeButton("否", new DialogInterface.OnClickListener() {
+		builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				cancelAlert();

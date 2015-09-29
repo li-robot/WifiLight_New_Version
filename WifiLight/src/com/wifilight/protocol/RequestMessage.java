@@ -19,10 +19,10 @@ public class RequestMessage {
 	
 	public RequestMessage(
 			
-			byte[] mac, /* MAC 地址*/
-			byte channel, /* 通道   */
-			byte[] cmd, /* 操作命令  */
-			byte[] args /* 请求参数    */
+			byte[] mac, /* MAC*/
+			byte channel, /* channel   */
+			byte[] cmd, /* cmd  */
+			byte[] args /* arg    */
 			
 			)
 	{

@@ -239,7 +239,7 @@ public class ProcessService extends Service implements Runnable{
 						WifiLightOperate.startWifiScan(configMac, configIp);
 						Log.i(LOG_TAG, "start wifi scan");
 						
-						/* 开始WIFI扫描  */
+						/* start WIFI scan  */
 						mState = STATE_WIFI_SCAN;
 						//process(configMac,configIp);
 						
@@ -251,7 +251,7 @@ public class ProcessService extends Service implements Runnable{
 						Log.i(LOG_TAG, "Device Mac : " + ByteUtils.bytesToHexString(dfArg.mac));
 						Log.i(LOG_TAG, "Device IP : " + ipStr);
 						
-						/* 设备发现状态  */
+						/* device find */
 						mState = STATE_FIND_DEVICE;
 						//process(configMac,configIp);
 					}
@@ -262,12 +262,12 @@ public class ProcessService extends Service implements Runnable{
 			}
 		}
 		
-		/* 获取Wifi请求列表 */
+		/* get wifi request list */
 		if(ByteUtils.byteArrayCompare(cmd, MessageConstants.CMD_GET_WIFI_SSID)) {
 			if(arg != null){
 				if( arg[1] == ErrorCode.SUCCESS ){
 					WifiInfoManager.addWifiInfos(arg);
-					/* wifi 扫描状态  */
+					/* wifi scan-status  */
 					mState = STATE_WIFI_SCAN;
 					//process(configMac,configIp);
 				}

@@ -2,7 +2,7 @@ package com.wifilight.protocol;
 
 public interface DeviceType {
 
-	/* Wifi Ã®µ∆¿‡–Õ */
+	/* device type*/
 	public final static byte WIFI_LAMP = 0x21;
 
 	public final static byte _1_RELAY = 0x01;

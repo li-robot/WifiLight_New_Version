@@ -12,14 +12,14 @@ public class WifiInfoUtils {
 		this.context = context;
 	}
 	
-	/* 检查Wifi连接  */
+	/* check the wifi connect  */
 	public boolean isWifiConnect() { 
 		ConnectivityManager connManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);  
 		NetworkInfo mWifi = connManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
 		return mWifi.isConnected();  
 	} 
 	
-	/* 获取SSID信息  */
+	/* get SSID info  */
 	public String getConnectedSsid(){
 		WifiManager wm = (WifiManager)context.getSystemService(Context.WIFI_SERVICE);
 		android.net.wifi.WifiInfo wifiInfo = wm.getConnectionInfo();

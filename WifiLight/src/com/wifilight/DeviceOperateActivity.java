@@ -59,8 +59,8 @@ public class DeviceOperateActivity extends Activity {
 		
 		ProcessService.operateActivityEntered = true;
 		Utils.canNetWorkOperateInMainThread();
-		int screenWidth  = getWindowManager().getDefaultDisplay().getWidth();       // 屏幕宽（像素，如：480px）  
-		int screenHeight = getWindowManager().getDefaultDisplay().getHeight();      // 屏幕高（像素，如：800p） 
+		int screenWidth  = getWindowManager().getDefaultDisplay().getWidth();      
+		int screenHeight = getWindowManager().getDefaultDisplay().getHeight();   
 		// device 
 		if(DeviceInfoManager.getDeviceList().size() > 0){
 			currentSelectSSID = getCurrentSSID();
@@ -73,7 +73,7 @@ public class DeviceOperateActivity extends Activity {
 			RelativeLayout topLayout = (RelativeLayout)this.findViewById(R.id.operate_layout);
 			topLayout.addView(view);
 		} else {
-			Toast.makeText(DeviceOperateActivity.this, "未发现智控设备，重新搜索！", Toast.LENGTH_LONG).show();
+			Toast.makeText(DeviceOperateActivity.this, "No device find, please retry!", Toast.LENGTH_LONG).show();
 			startActivity(new Intent(this,SearchActivity.class));
 			finish();
 			return;
@@ -94,7 +94,6 @@ public class DeviceOperateActivity extends Activity {
 			}
 		});
 		
-		/* 设备 ListView item 点击事件  */
 		deviceList.setOnItemClickListener(new OnItemClickListener(){
 
 			@Override
@@ -106,7 +105,6 @@ public class DeviceOperateActivity extends Activity {
 			}
 		});
 		
-		/* 长按编辑名称 */
 		deviceList.setOnItemLongClickListener(new OnItemLongClickListener(){
 
 			@Override
@@ -132,7 +130,7 @@ public class DeviceOperateActivity extends Activity {
 		return wifiInfo.getSSID();
 	}
 	
-	/* 获取SSID信息  */
+	/* get ssid info  */
 	public boolean isNetworkChanged(){
 		String nowSSID = getCurrentSSID();
 		
@@ -148,7 +146,6 @@ public class DeviceOperateActivity extends Activity {
 	
 	
 	public void setFullscreen() {
-		// 设置全屏
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 	}
 	
@@ -167,7 +164,7 @@ public class DeviceOperateActivity extends Activity {
 
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		showCloseDialog("提示","确定要退出吗？");
+		showCloseDialog("Tip","Are you sure?");
 		return true;
 	}
 	
@@ -176,14 +173,14 @@ public class DeviceOperateActivity extends Activity {
 		AlertDialog.Builder closeDialog = new AlertDialog.Builder(this);
 		closeDialog.setTitle(title);
 		closeDialog.setMessage(msg);
-		closeDialog.setPositiveButton("取消", new DialogInterface.OnClickListener() {
+		closeDialog.setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
 			
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				dialog.dismiss();
 			}
 		});
-		closeDialog.setNegativeButton("确定", new DialogInterface.OnClickListener() {
+		closeDialog.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface arg0, int arg1) {
 				DeviceInfoManager.getDeviceList().removeAllElements();
@@ -201,10 +198,10 @@ public class DeviceOperateActivity extends Activity {
 	
 	public void setDeviceName(final DeviceInfo device,final byte[] mac,final String ipStr){
 		AlertDialog.Builder builder = new AlertDialog.Builder(DeviceOperateActivity.this);
-		builder.setTitle("请为台灯编辑名称");
+		builder.setTitle("Edit Name");
 		final EditText nameEdit = new EditText(DeviceOperateActivity.this);
 		builder.setView(nameEdit);
-		builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+		builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
 			
 			@Override
 			public void onClick(DialogInterface arg0, int arg1) {
@@ -220,7 +217,7 @@ public class DeviceOperateActivity extends Activity {
 			}
 		});
 		/* builder */
-		builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+		builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface arg0, int arg1) {
 				arg0.dismiss();

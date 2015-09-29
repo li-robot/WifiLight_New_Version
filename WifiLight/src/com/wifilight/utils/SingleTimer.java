@@ -1,10 +1,6 @@
 package com.wifilight.utils;
 
 import java.util.Timer;
-import java.util.TimerTask;
-
-import com.wifilight.utils.SingleTask.WorkTask;
-
 public class SingleTimer {
 	private static Timer timer = new Timer();
 	private SingleTimer(){

@@ -66,7 +66,7 @@ public class WifiInfoActivity extends Activity{
 		public void dispatchMessage(Message msg) {
 			super.dispatchMessage(msg);
 			if(msg.what == WIFI_LIST_REFRESH){
-				Toast.makeText(context, "刷新失败！", Toast.LENGTH_LONG).show();
+				Toast.makeText(context, "refresh failed!", Toast.LENGTH_LONG).show();
 				wifiList.onRefreshComplete();
 			}
 		}
@@ -98,7 +98,7 @@ public class WifiInfoActivity extends Activity{
 			public void configSuccess() {
 				
 				check = CheckDeviceGet.getInstance();
-				showAlert("等待台灯加入网络");
+				showAlert("Wait for device join the network");
 				LogUtils.logToConsole(LOG_TAG, " configSuccess ", LogUtils.LOG_LEVEL_INFO);
 				if(!isCreate){
 					handler1 = new TimeoutHandler(25000,Looper.getMainLooper());
@@ -109,7 +109,7 @@ public class WifiInfoActivity extends Activity{
 				handler1.setOnTimeoutListener(new OnTimeoutListener(){
 					@Override
 					public void onTimeout() {
-						LogUtils.logToConsole(LOG_TAG, " 搜索设备超时！", LogUtils.LOG_LEVEL_INFO);
+						LogUtils.logToConsole(LOG_TAG, "Search Devicce Timeout", LogUtils.LOG_LEVEL_INFO);
 						check._stop();
 						check = null;
 						TaskExcute.setWorkTask(new WorkTask(){
@@ -208,7 +208,7 @@ public class WifiInfoActivity extends Activity{
 		String macStr = null;
 		if(ProcessService.configMac != null){
 			macStr = ByteUtils.bytesToHexString(ProcessService.configMac).toUpperCase();
-			tipTxt.setText("请为"+"\""+"朗世-"+macStr.substring(12, 15)+macStr.substring(16, 19)+"\""+"选取网络");
+			tipTxt.setText("XX"+"\""+"XX-"+macStr.substring(12, 15)+macStr.substring(16, 19)+"\""+"choice the network");
 		}
 		tipTxt.setId(0x1111);
 		tipTxt.setTextSize(18);
@@ -276,20 +276,20 @@ public class WifiInfoActivity extends Activity{
 	
 	public static void showPasswordInputDialog(final String ssid){
 		AlertDialog.Builder inputDialog = new AlertDialog.Builder(context);
-		inputDialog.setTitle("请输入\""+ssid+"\"的密码");
+		inputDialog.setTitle("please input the \""+ssid+"\"'s password"); 
 		final EditText input = new EditText(context);
 		input.setFocusable(true);
 		input.requestFocus();
 		input.setInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL);
 		inputDialog.setView(input);
-		inputDialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+		inputDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				dialog.dismiss();
 			}
 		});
 		
-		inputDialog.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+		inputDialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
 			
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
@@ -321,7 +321,7 @@ public class WifiInfoActivity extends Activity{
 		AlertDialog.Builder tips = new AlertDialog.Builder(context);
 		tips.setTitle(title);
 		tips.setMessage(msg);
-		tips.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+		tips.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				dialog.dismiss();
@@ -334,7 +334,7 @@ public class WifiInfoActivity extends Activity{
 		AlertDialog.Builder tips = new AlertDialog.Builder(context);
 		tips.setTitle(title);
 		tips.setMessage(msg);
-		tips.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+		tips.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				
@@ -348,13 +348,13 @@ public class WifiInfoActivity extends Activity{
 		switchNetworkDialog = new AlertDialog.Builder(context);
 		switchNetworkDialog.setTitle(title);
 		switchNetworkDialog.setMessage(msg);
-		switchNetworkDialog.setPositiveButton("取消", new DialogInterface.OnClickListener() {
+		switchNetworkDialog.setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				// WifiInfoActivity.this.finish();
 			}
 		});
-		switchNetworkDialog.setNegativeButton("切换", new DialogInterface.OnClickListener() {
+		switchNetworkDialog.setNegativeButton("Change", new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface arg0, int arg1) {
 				switchNetwork();

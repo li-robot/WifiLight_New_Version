@@ -3,39 +3,39 @@ package com.wifilight.protocol;
 public interface MessageConstants {
 	
 	/**
-	 *  发现台灯  
+	 *  Device find
 	 **/
 	public static byte[] CMD_FIND_WIFI_LIGHT = {0x00,0x00};
 	/**
-	 *  获取SSID 
+	 *  Get SSID 
 	 **/
 	public static byte[] CMD_GET_WIFI_SSID = {0x00,0x01};
 	/**
-	 * 启动Wifi扫描
+	 * Scan Wifi
 	 * */
 	public static byte[] CMD_WIFI_SCAN = {0x00,0x04};
 	/**
-	 * wifi台灯配置
+	 * wifi device config 
 	 **/
 	public static byte[] CMD_WIFI_LIGHT_CONFIG = {0x00,0x02};
 	/**
-	 * 获取设备信息
+	 * get device info
 	 **/
 	public static byte[] CMD_GET_DEVICE_INFO = {0x00,0x06};
 	/**
-	 * 修改设备信息
+	 * modify device info 
 	 **/
 	public static byte[] CMD_MODIFY_DEVICE_INFO = {0x00,0x07};
 	/**
-	 * 获取设备状态信息
+	 * get device status info
 	 **/
 	public static byte[] CMD_GET_DEVICE_STATUS_INFO = {0x00,0x08}; 
 	/**
-	 * wifi台灯开操作
+	 * open device
 	 **/
 	public static byte[] WIFI_LAMP_OPEN = {0x01,0x10};
 	/**
-	 * wifi台灯关操作
+	 * close device
 	 **/
 	public static byte[] WIFI_LAMP_CLOSE = {0x01,0x11};
 	/**
@@ -43,7 +43,7 @@ public interface MessageConstants {
 	 **/
 	public static byte[] WIFI_SOME_OPERATE = {0x01,0x40};
 	/**
-	 * 默认名称
+	 * default name
 	 */
 	public static byte[] DEFAULT_NAME = {
 		
@@ -54,7 +54,7 @@ public interface MessageConstants {
 		
 	};
 	/**
-	 * 主动上报
+	 * auto-report
 	 **/
 	public static byte[] AUTO_REPORT = {(byte)0xFF,0x21};
 	/**
@@ -70,11 +70,11 @@ public interface MessageConstants {
 	 */
 	public static byte RESPONSE_DIR = 0x01;
 	/**
-	 * 协议报文能够确定的长度
+	 * the protocol data length
 	 **/
 	public static byte ENSURE_LENGTH = 19;
 	/**
-	 * 协议报文data部分的确定长度
+	 * XXX
 	 */
 	public static byte DATA_ENSURE_LENGTH = 13;
 	/**
@@ -82,9 +82,13 @@ public interface MessageConstants {
 	 **/
 	public static byte DEFAULT_SESSION_ID = 0x00;
 	
-	/* 启动扫描 Flag */
+	/**
+	 * the flag of wifi-scan
+	 */
 	public static byte CONFIG_TYPE_WIFI_SCAN = 0;
 	
-	/* 设备发现Flag */
+	/**
+	 * the flag of device find
+	 */
 	public static byte CONFIG_TYPE_DEVICE_FIND = 1;
 }

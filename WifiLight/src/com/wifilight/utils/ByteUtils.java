@@ -5,10 +5,7 @@ import java.nio.IntBuffer;
 
 public class ByteUtils {
 	
-	/**
-	 * @param i int 参数
-	 * @return 一个byte数组
-	 */
+
 	public static byte[] intToByteArray(int i) {   
 		  byte[] result = new byte[4];   
 		  result[0] = (byte)((i >> 24) & 0xFF);
@@ -25,10 +22,7 @@ public class ByteUtils {
 	}
 	
 	/**
-	 * crc校验
-	 * @param msg
-	 * @param len
-	 * @return
+	 * crc verify
 	 */
 	public static byte[] lower_layer_make_crc16(byte[] msg, int len)
 	{
@@ -58,7 +52,7 @@ public class ByteUtils {
     }
 	
 	/**
-	 * 从原数组中截取一个数组
+	 * get sub array from src-array
 	 * */
 	public static byte[] getSubByteArray(byte[] src,int index,int len){
 		if(src == null){
@@ -157,7 +151,7 @@ public class ByteUtils {
 	public static String getLightName(byte[] mac){
 		if(mac != null){
 			String macStr = ByteUtils.bytesToHexString(mac).toUpperCase();
-			return "朗世-"+macStr.substring(12, 15)+macStr.substring(16, 19);
+			return "XX-"+macStr.substring(12, 15)+macStr.substring(16, 19);
 		}
 		return null;
 	}

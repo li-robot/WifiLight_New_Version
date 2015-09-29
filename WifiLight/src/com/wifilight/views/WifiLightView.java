@@ -21,47 +21,47 @@ import com.wifilight.utils.ByteUtils;
 
 public class WifiLightView extends View {
 
-	DeviceInfo deviceInfo;
-	int bgId;
-	int screenWidth;
-	int screenHeight;
+	private DeviceInfo deviceInfo;
+	private int bgId;
+	private int screenWidth;
+	private int screenHeight;
 	
-	Bitmap switchBitmap;
-	Bitmap switchBitmap_h;
-	Bitmap addDelBitmap;
-	Bitmap touchPointBitmap_h;
-	Bitmap touchPointBitmap;
+	private Bitmap switchBitmap;
+	private Bitmap switchBitmap_h;
+	private Bitmap addDelBitmap;
+	private Bitmap touchPointBitmap_h;
+	private Bitmap touchPointBitmap;
 	
-	int bitmapWidth;
-	int bitmapHeight;
+	private int bitmapWidth;
+	private int bitmapHeight;
 	
-	int addDelX ;
-	int addDelY ;
+	private int addDelX ;
+	private int addDelY ;
 	
-	Paint paint;
+	private Paint paint;
 	
-	float[] top_angles = { 202.5f,225f,247.5f,270f,292.5f,314.5f,337 };
-	float[] bottom_angles = { 157.5f,135,112.5f,90,67.5f,45,22.5f };
+	private float[] top_angles = { 202.5f,225f,247.5f,270f,292.5f,314.5f,337 };
+	private float[] bottom_angles = { 157.5f,135,112.5f,90,67.5f,45,22.5f };
 	
-	int currentX ;
-	int currentY ;
+	private int currentX ;
+	private int currentY ;
 	
-	int currentX1 ;
-	int currentY1 ;
+	private int currentX1 ;
+	private int currentY1 ;
 	
-	boolean isTop ;
-	boolean isBottom;
+	private boolean isTop ;
+	private boolean isBottom;
 	
-	byte switchState = 0;
+	private byte switchState = 0;
 	
-	byte adjVal;
-	byte adjVal1;
+	private byte adjVal;
+	private byte adjVal1;
 	
-	int region ;
+	private int region ;
 	
-	Vector<Integer> pointXs = new Vector<Integer>();
+	private Vector<Integer> pointXs = new Vector<Integer>();
 	
-	String deviceName;
+	private String deviceName;
 	
 	public WifiLightView(Context context,DeviceInfo device,int screenWidth , int screenHeight) {
 		super(context);
@@ -226,12 +226,10 @@ public class WifiLightView extends View {
 		if(event.getAction() == MotionEvent.ACTION_UP
 				&& (isCanTouchRegionTop((int)event.getX(),(int)event.getY()) || isCanTouchRegionBottom((int)event.getX(),(int)event.getY())) ){
 			
-			/* 发送 报文   */
 			if( deviceInfo != null && switchState == 1){
 				WifiLightOperate.wifiLightOperate(deviceInfo.getMacAddr(), deviceInfo.getIpStr(),deviceInfo.getNodes().get(0).getChannel(), switchState, adjVal, adjVal1);
 			}
 		}
-		// 构造两个区域
 		return true ;
 	}
 	

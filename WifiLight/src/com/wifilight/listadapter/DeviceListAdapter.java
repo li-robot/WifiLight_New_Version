@@ -72,7 +72,7 @@ public class DeviceListAdapter extends BaseAdapter{
 		System.out.println(macStr);
 		text.setText(new String(devices.get(arg0).getNodes().get(0).getNodeName()));
 		if(ByteUtils.byteArrayCompare(devices.get(arg0).getNodes().get(0).getNodeName(), MessageConstants.DEFAULT_NAME)){
-			text.setText("¿  ¿-"+macStr.substring(12, 15)+macStr.substring(16, 19));
+			text.setText("XX-"+macStr.substring(12, 15)+macStr.substring(16, 19));
 		}
 		return view;
 	}
